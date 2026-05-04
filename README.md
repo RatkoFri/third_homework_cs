@@ -13,12 +13,15 @@ You are given a program that computes **scaled dot-product attention scores** â€
 
 ## Stencil kernel (3 points)
 
+The heat diffusion equation is a partial differential equation (PDE) that describes the distribution of temperature in a given region over time. In 1D setting it is
+$$\frac{\partial u}{\partial t} = \alpha \frac{\partial^2 u}{\partial x^2}$$.
+
 The provided program computes one time step of heat diffusion using a **3-point stencil**:
 
 $$u_{new}[i] = u[i] + \alpha \cdot (u[i-1] - 2 \cdot u[i] + u[i+1])$$
 
 
-For each interior point `i`, the update reads three neighboring values, approximates the spatial curvature via the second-order finite difference `u[i-1] - 2*u[i] + u[i+1]`, scales it by the diffusion coefficient `alpha`, and advances the solution in time. Boundary points are fixed at `u_new[0] = u_new[N-1] = 0.0` (Dirichlet conditions).
+For each interior point `i`, the update reads three neighboring values, approximates the spatial curvature via the second-order finite difference `u[i-1] - 2*u[i] + u[i+1]`, scales it by the diffusion coefficient `alpha`, and advances the solution in time. Boundary points are fixed at `u[0] = u[N-1] = 0.0` (Dirichlet conditions).
 
 You are given both a scalar and a vectorized implementation, which is located in the `workload/heat_stencil/` folder. Your task is to analyze their performance:
 
