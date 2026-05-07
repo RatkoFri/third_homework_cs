@@ -7,7 +7,7 @@ You are given a program that computes **scaled dot-product attention scores** â€
 
 1. Set the vector L1 cache size to 8KB.
 2. Run the program for different Vector Processing unit (VPU) sizes (128, 256, 512, 1024, 2048 and 4096 bits) and compare the performance of the vectorized implementation against the scalar version.
-3. To observe the improvements, report CPI (Cycles Per Instruction) and execution time for both implementations across the different sequence lengths.
+3. To observe the improvements, report CPI (Cycles Per Instruction) and execution time for both implementations across the different vector lengths.
 
 > In all experiments, set the O3 processor as scalar processor, with default settings.
 
@@ -48,7 +48,7 @@ Five vectorized RVV kernels are implemented, each representing a different memor
 
 The source code is located in the `workload/spmv/` folder. Your task is to analyze how memory access patterns affect performance across different cache configurations:
 
-1. Set the vector L1 cache to 8KB, 8-way set associative, with a 64-byte cache line.
+1. Set the vector L1 cache to 8KB.
 2. Run all four kernels for VPU vector length of 256, 512, and 1024 bits.
 3. Report **CPI** and **L1 cache miss events** for each kernel.
 4. Repeat the experiment with a 64KB L1 cache and compare results to assess the impact of cache size on performance.
